@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取网页源代码</title>
+
+    <!-- 引入iconoir图标库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/iconoir@6.7.0/css/iconoir.css" />
+
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- 引入Fira Code字体 -->
+    <link rel="stylesheet" href="https://unpkg.com/firacode@6.2.0/distr/fira_code.css" />
+
+    <!-- 引入Highlight.js样式 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css" />
+
+    <!-- 引入自定义样式 -->
+    <link rel="stylesheet" href="./get_c.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 输入部分 -->
+      <section class="input-section">
+        <div class="url-input-group">
+          <input type="url" id="url-input" placeholder="输入一个网址" value="https://www.bqg128.com/" />
+          <button id="fetch-button">获取源代码</button>
+        </div>
+
+        <div class="controls">
+          <!-- 控制按钮 -->
+          <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i> 切换暗色/亮色主题</button>
+        </div>
+      </section>
+
+      <!-- 输出部分 -->
+      <section class="output-section">
+        <div class="result-container">
+          <div class="result-header">
+            <span>源代码将显示在下方区域</span>
+            <button class="copy-btn" id="copy-btn"><i class="iconoir-multiple-pages-empty"></i> 复制它！</button>
+          </div>
+          <pre><code id="source-code">网页代码将会显示在此区域</code></pre>
+        </div>
+        <div class="text-container"></div>
+      </section>
+    </div>
+    <!-- 引入highlight.js库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script src="./get_c.js"></script>
+  </body>
+</html>
