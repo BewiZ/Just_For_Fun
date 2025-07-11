@@ -1,0 +1,286 @@
+:root {
+  --code-font: Consolas, 'Fira Code', monospace; /* 定义代码字体 */
+  --font-size-s: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1a2980, #26d0ce);
+  min-height: 100vh; /* 最小高度为视口高度 */
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column; /* 垂直布局 */
+  align-items: center; /* 水平居中 */
+}
+
+.container {
+  background-color: #2d2d2d;
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 15px; /* 圆角 */
+  overflow: hidden; /* 隐藏溢出内容 */
+  font-size: 16px;
+  align-items: center;
+}
+
+.input-section {
+  padding: 30px; /* 内边距 */
+  background: #f8f9faa4; /* 浅灰色背景 */
+  border-bottom: 10px solid #e0e0e0; /* 底部边框 */
+}
+
+.url-input-group {
+  background: #00eeff00;
+  border-radius: 25px;
+  box-shadow: 8px 5px 1px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden; /* 隐藏溢出 */
+}
+
+#url-input {
+  flex: 1;
+  padding: 15px 30px; /* 内边距 */
+  border: none; /* 无边框 */
+  font-size: 1em; /* 字体大小 */
+  outline: none; /* 移除轮廓 */
+  background: rgb(255, 255, 255);
+}
+
+#fetch-button {
+  background: linear-gradient(90deg, #2196f3, #21cbf3); /* 蓝色渐变按钮 */
+  color: white; /* 白色文字 */
+  border: none; /* 无边框 */
+  padding: 0 35px; /* 内边距 */
+  font-size: 1.1rem; /* 字体大小 */
+  font-weight: 600; /* 粗体 */
+  cursor: pointer; /* 手型指针 */
+  transition: all 0.3s ease; /* 过渡效果 */
+}
+
+#fetch-button:hover {
+  background: linear-gradient(90deg, #1976d2, #03a9f4); /* 悬停时深色渐变 */
+  transform: translateY(-2px); /* 上移效果 */
+}
+#fetch-button:active {
+  transform: translateY(0); /* 点击时恢复原状 */
+}
+
+.controls {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  margin-top: 20px; /* 上边距 */
+}
+
+.theme-toggle {
+  background: #dcdcdc; /* 深色背景 */
+  color: #323232; /* 白色文字 */
+  border: none; /* 无边框 */
+  padding: 10px 20px; /* 内边距 */
+  border-radius: 25px; /* 圆角 */
+  font-size: 1em; /* 字体大小 */
+  cursor: pointer; /* 手型指针 */
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  gap: 10px; /* 图标和文字之间的间距 */
+  transition: background 0.3s ease; /* 背景颜色过渡 */
+}
+
+.theme-toggle:hover {
+  background: #bebdbd; /* 悬停时浅色背景 */
+}
+
+.theme-toggle i {
+  font-size: 1.2em; /* 图标大小 */
+}
+
+/* 输出部分 */
+.output-section {
+  padding: 30px; /* 内边距 */
+  min-height: 200px; /* 最小高度 */
+}
+
+/* 结果容器样式 */
+.result-container {
+  background: #2d2d2d; /* 深灰色背景 */
+  border-radius: 8px; /* 圆角 */
+  overflow: hidden; /* 隐藏溢出 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+}
+
+/* 头部样式 */
+.result-header {
+  background: #404040; /* 深色背景 */
+  color: rgb(210, 209, 209); /* 白色文字 */
+  display: flex;
+  justify-content: space-between; /* 两端对齐 */
+  align-items: center; /* 垂直居中 */
+  padding: 12px 25px; /* 内边距 */
+}
+
+.copy-btn {
+  background-color: rgb(52, 171, 86);
+  color: white; /* 白色文字 */
+  font-weight: bold; /* 粗体 */
+  border: none; /* 无边框 */
+  padding: 8px 16px; /* 内边距 */
+  border-radius: 5px; /* 圆角 */
+  cursor: pointer; /* 手型指针 */
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  gap: 5px; /* 图标与文字间距 */
+  transition: all 0.3s ease; /* 过渡效果 */
+}
+.copy-btn:hover {
+  background-color: rgb(33, 122, 60); /* 悬停时颜色变化 */
+}
+
+/* 代码显示 */
+.result-container pre {
+  display: block;
+  width: 100%; /* 宽度100% */
+  max-height: 600px; /* 最大高度 */
+  margin: 0; /* 去除默认外边距 */
+  padding: 10px 20px; /* 内边距 */
+  background: #2d2d2d; /* 深色背景 */
+  overflow-x: scroll; /* 自动滚动条 */
+  overflow-y: auto; /* 垂直滚动条 */
+  min-height: 100px; /* 最小高度 */
+  tab-size: 2; /* 制表符宽度 */
+}
+#source-code {
+  color: #f8f8f2; /* 代码颜色 */
+}
+#source-code,
+#source-code * {
+  background: transparent; /* 透明背景 */
+  font-size: 14px; /* 字体大小 */
+  line-height: 1.5; /* 行高 */
+  font-family: var(--code-font); /* 使用定义的代码字体 */
+  white-space: pre; /* 保留空格和换行 */
+}
+
+.hljs-meta {
+  color: rgb(124, 172, 248); /* 元数据颜色 */
+}
+.hljs-name {
+  color: rgb(124, 172, 248); /* 名称颜色 */
+}
+.hljs-tag {
+  color: rgb(128, 128, 128); /* 标签颜色 */
+}
+.hljs-attr {
+  color: rgb(160, 219, 253); /* 属性颜色 */
+}
+.hljs-keyword {
+  color: rgb(160, 219, 253); /* 关键字颜色 */
+}
+.hljs-string {
+  color: rgb(204, 146, 109); /* 字符串颜色 */
+}
+
+.hljs-ln-numbers {
+  text-align: right;
+  color: #6e7681;
+  border-right: 2px solid #3b4048; /* 添加右侧分隔线 */
+  padding: 0 15px 0 5px !important; /* 增加右侧内边距 */
+  width: 50px; /* 设置固定宽度 */
+  user-select: none; /* 防止选择行号 */
+  vertical-align: top; /* 顶部对齐 */
+}
+
+/* 代码列样式 */
+.hljs-ln-code {
+  padding-left: 20px !important; /* 增加左侧内边距 */
+  vertical-align: top; /* 顶部对齐 */
+}
+
+/* 表格行悬停效果 */
+.hljs-ln tr:hover {
+  background-color: rgba(33, 150, 243, 0.05) !important;
+}
+@media (max-width: 524px) {
+  body {
+    padding: 10px 12px;
+  }
+  .input-section {
+    padding: 15px; /* 减小内边距 */
+  }
+  .controls {
+    display: flex;
+    margin-top: 10px; /* 上边距 */
+  }
+  .url-input-group {
+    flex-direction: column; /* 垂直布局 */
+    border-radius: 10px; /* 圆角 */
+  }
+  #url-input {
+    width: 100%; /* 宽度100% */
+    padding: 15px 25px;
+  }
+  #fetch-button {
+    padding: 8px; /* 内边距 */
+  }
+  .theme-toggle {
+    font-size: 0.8em;
+    padding: 5px 12px;
+  }
+
+  .result-header {
+    flex-direction: column; /* 垂直布局 */
+  }
+  .output-section {
+    padding: 15px; /* 减小内边距 */
+  }
+  .result-container pre {
+    padding: 10px; /* 减小内边距 */
+  }
+  #source-code,
+  #source-code * {
+    font-size: var(--font-size-s); /* 减小字体大小 */
+  }
+  .hljs-ln-numbers {
+    width: 20px; /* 减小行号宽度 */
+    padding: 0 5px 0 0px !important; /* 减小右侧内边距 */
+  }
+  .hljs-ln-code {
+    padding-left: 5px !important; /* 减小左侧内边距 */
+  }
+  .copy-btn {
+    width: 100%; /* 按钮宽度100% */
+    margin-top: 10px; /* 上边距 */
+  }
+}
+
+.dark-theme {
+  background: linear-gradient(135deg, #092817, #446b4f);
+  color: #e0e0e0; /* 暗黑主题文字颜色 */
+}
+.dark-theme .input-section {
+  background: #5e8a545b; /* 暗黑主题输入区域背景 */
+  border-bottom: 10px solid #7b7b7b50; /* 底部边框 */
+}
+.dark-theme #url-input {
+  background: #474747; /* 暗黑主题输入框背景 */
+  color: #e0e0e0; /* 暗黑主题输入框文字颜色 */
+}
+.dark-theme #fetch-button {
+  background: linear-gradient(135deg, #135933, #418154); /* 暗黑主题按钮渐变 */
+}
+.dark-theme .theme-toggle {
+  background: #3a3a3a; /* 暗黑主题切换按钮背景 */
+  color: #e0e0e0; /* 暗黑主题切换按钮文字颜色 */
+}
+.dark-theme .theme-toggle:hover {
+  background: #5e5e5e; /* 暗黑主题悬停背景 */
+}
+.dark-theme .output-section {
+  background: #55766e99; /* 暗黑主题输出区域背景 */
+}
